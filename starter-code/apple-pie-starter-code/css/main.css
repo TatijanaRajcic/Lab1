@@ -1,0 +1,100 @@
+body, html {
+  height:100%; /* giving both html and body a 100% enables to size other elements with % . Always add both (body AND html) */
+  width: 100%;
+}
+
+body {
+  margin:0; /* getting rid of default margin and padding the body has */
+  padding:0;
+  font-family: Helvetica, sans-serif;
+}
+
+html {
+  font-size: 13px; /* we give the html a font-size so that we can give elements inside of it a relative size */
+}
+
+/* HERO IMAGE */
+
+.hero-image{
+  height:100%; /* the div hero-image will be 50% of its containing element, which is body. Then, the div will be 50% of the screen */
+  background-image: url("../images/apple-pie.jpg"); /* we write the relative path. main.css is in the folder css. we go on the parent folder (..) then access images and so on) */
+  background-size: cover; /* the image resizes to cover the entire container (width) */
+  background-position: center; /* the image, if larger in height, centers inside the container */
+  display:flex; /* to center the text inside the image */ 
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-text {
+  font-size: 10em;  /* relative to the html font-size */
+  color:white;
+}
+
+/* 
+Other solution:
+
+.hero-image{
+  height:100%;
+  background-image: url("../images/apple-pie.jpg"); 
+  background-size: cover; 
+  background-position: center; 
+  position: relative
+}
+
+.hero-text {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  margin:0;
+}
+*/
+
+/* BLOCK OF CONTENT */
+
+.content {
+  font-size: 3em;
+  padding: 3% 8%;
+}
+
+/* GENERAL CLASSES */
+
+.centered {
+  width: 100%;
+  display:flex;
+  justify-content: center;
+}
+
+.no-bold {
+  font-weight: normal;
+}
+
+/* SECTIONS WITHIN CONTENT */
+
+section {
+  padding: 3% 0;
+  border-bottom: 2px solid grey;
+}
+
+.section-list {
+  list-style: none; /* we remove the default style... */
+}
+
+/* SPECIFIC RULES BY SECTIONS */
+
+.list-unordered li:before { /* ...in order to add a custom one */
+  content: "- "; 
+}
+
+.list-ordered {
+  counter-reset: my-counter; /* we set a counter in this list. We initialize it here */
+}
+
+.list-ordered li:before { /* ...in order to add a custom one */
+  counter-increment: my-counter; /* we increment the counter at every Li tag in the list, since that's what we want to count */
+  content: counter(my-counter) ")"; /* we display this counter followed by a parenthesis */
+}
+
+section:last-of-type {
+  border: none /* we delete the last border */
+}
